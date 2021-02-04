@@ -11,16 +11,6 @@ require 'faker'
 User.destroy_all
 City.destroy_all
 
-10.times do
-  User.create(
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
-    description: Faker::Lorem.words(number: 5),
-    email: Faker::Internet.email,
-    age: Faker::Number.between(from: 10, to: 50)
-  )
-end
-puts "10 User"
 
 10.times do
   City.create(
@@ -29,3 +19,15 @@ puts "10 User"
   )
 end
 puts "10 City"
+
+10.times do
+  User.create(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    description: Faker::Lorem.words(number: 5),
+    email: Faker::Internet.email,
+    age: Faker::Number.between(from: 10, to: 50),
+    city_id: City.all.sample.id
+  )
+end
+puts "10 User"
