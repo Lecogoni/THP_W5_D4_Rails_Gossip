@@ -8,10 +8,11 @@
 
 require 'faker'
 
+Taggossip.destroy_all
+Tag.destroy_all
 Gossip.destroy_all
 User.destroy_all
 City.destroy_all
-
 
 10.times do
   City.create(
@@ -41,3 +42,31 @@ puts "10 User"
   )
 end
 puts "10 Gossip"
+
+10.times do
+  Tag.create(
+    title: ["#covid", "#ClaBringue", "#Rails", "#THP", "#Monkey", "#Picsou", "#AppleForever", "#TotoEnBalade", "#Prout", "#BriceDeNice"].sample
+  )
+end
+puts "1O Tag"
+
+# create 20 taggossips - 1 par gossip
+
+gossip_all = Gossip.all
+20.times do |idx|
+  Taggossip.create(
+    gossip_id: gossip_all[idx].id,
+    tag_id: Tag.all.sample.id
+  )
+end
+puts "20 taggossip - 1 par gossip"
+
+# create 10 random taggossips
+10.times do
+  Taggossip.create(
+    gossip_id: Gossip.all.sample.id,
+    tag_id: Tag.all.sample.id
+  )
+end
+puts "10 random taggossip"
+
