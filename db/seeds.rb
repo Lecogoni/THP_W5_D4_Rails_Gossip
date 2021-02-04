@@ -8,6 +8,7 @@
 
 require 'faker'
 
+Gossip.destroy_all
 User.destroy_all
 City.destroy_all
 
@@ -31,3 +32,12 @@ puts "10 City"
   )
 end
 puts "10 User"
+
+20.times do
+  Gossip.create(
+    title: Faker::Movie.title,
+    content: Faker::Movie.quote,
+    user_id: User.all.sample.id
+  )
+end
+puts "10 Gossip"
