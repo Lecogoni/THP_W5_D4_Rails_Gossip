@@ -8,6 +8,8 @@
 
 require 'faker'
 
+Commentrecipient.destroy_all
+Comment.destroy_all
 Taggossip.destroy_all
 Tag.destroy_all
 Gossip.destroy_all
@@ -70,3 +72,29 @@ puts "20 taggossip - 1 par gossip"
 end
 puts "10 random taggossip"
 
+5.times do
+  Comment.create(
+    sender_id: User.all.sample.id,
+    content: Faker::Quote.robin
+  )
+end
+puts "5 comment"
+
+# c = Comment.first
+# c.sender => donne l'expéditeur
+# c.commentrecipients
+
+5.times do
+  Commentrecipient.create(
+    comment_id: Comment.all.sample.id,
+    recipient_id: User.all.sample.id,
+  )
+end
+puts "5 commentrecipient"
+
+# cr = Commentrecipient.first
+# cr.recipient.first_name
+
+# com = Comment.find_by(id: 5)
+# list = com.commentrecipients
+# list[0].recipient.first_name
