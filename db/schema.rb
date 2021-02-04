@@ -10,30 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_04_205213) do
+ActiveRecord::Schema.define(version: 2021_02_04_221307) do
 
   create_table "cities", force: :cascade do |t|
     t.string "name"
     t.string "zip_code"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "commentrecipients", force: :cascade do |t|
-    t.integer "comment_id"
-    t.integer "recipient_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["comment_id"], name: "index_commentrecipients_on_comment_id"
-    t.index ["recipient_id"], name: "index_commentrecipients_on_recipient_id"
-  end
-
-  create_table "comments", force: :cascade do |t|
-    t.string "content"
-    t.integer "sender_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["sender_id"], name: "index_comments_on_sender_id"
   end
 
   create_table "gossips", force: :cascade do |t|
@@ -43,6 +26,23 @@ ActiveRecord::Schema.define(version: 2021_02_04_205213) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_gossips_on_user_id"
+  end
+
+  create_table "pmrecipients", force: :cascade do |t|
+    t.integer "privatemessage_id"
+    t.integer "recipient_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["privatemessage_id"], name: "index_pmrecipients_on_privatemessage_id"
+    t.index ["recipient_id"], name: "index_pmrecipients_on_recipient_id"
+  end
+
+  create_table "privatemessages", force: :cascade do |t|
+    t.string "content"
+    t.integer "sender_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["sender_id"], name: "index_privatemessages_on_sender_id"
   end
 
   create_table "taggossips", force: :cascade do |t|
