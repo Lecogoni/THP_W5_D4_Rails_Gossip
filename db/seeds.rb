@@ -9,6 +9,7 @@
 require 'faker'
 
 User.destroy_all
+City.destroy_all
 
 10.times do
   User.create(
@@ -19,3 +20,12 @@ User.destroy_all
     age: Faker::Number.between(from: 10, to: 50)
   )
 end
+puts "10 User"
+
+10.times do
+  City.create(
+    name: Faker::Address.city,
+    zip_code: Faker::Address.zip_code,
+  )
+end
+puts "10 City"
