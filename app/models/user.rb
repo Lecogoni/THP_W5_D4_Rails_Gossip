@@ -8,5 +8,6 @@ class User < ApplicationRecord
   has_many :received_messages, foreign_key: 'privatemessage_id', class_name: "Privatemessage", through: :pmrecipients
 
   has_many :coms
+  has_many :likes
 end
 

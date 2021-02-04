@@ -8,7 +8,7 @@
 
 require 'faker'
 
-
+Like.destroy_all
 Com.destroy_all
 Pmrecipient.destroy_all
 Privatemessage.destroy_all
@@ -116,3 +116,21 @@ puts "20 Com"
 
 # go = Gossip.find_by(id: ???)
 # go.coms[1].user.first_name
+
+20.times do
+  num = rand(1..2)
+  if num == 1
+    Like.create(
+      user_id: User.all.sample.id,
+      gossip_id: Gossip.all.sample.id,
+    )
+  else
+    Like.create(
+      user_id: User.all.sample.id,
+      com_id: Com.all.sample.id
+    )
+  end
+end
+puts "20 Like"
+
+# com_id: Com.all.sample.id

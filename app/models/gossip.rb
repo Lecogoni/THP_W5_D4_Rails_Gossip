@@ -5,4 +5,5 @@ class Gossip < ApplicationRecord
   has_many :tags, through: :taggossips
 
   has_many :coms
+  has_many :likes
 end
