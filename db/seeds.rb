@@ -8,6 +8,8 @@
 
 require 'faker'
 
+
+Com.destroy_all
 Pmrecipient.destroy_all
 Privatemessage.destroy_all
 Taggossip.destroy_all
@@ -98,3 +100,19 @@ puts "5 Pmrecipient"
 # com = Privatemessage.find_by(id: ???)
 # list = com.commentrecipients
 # list[0].recipient.first_name
+
+20.times do
+  Com.create(
+    content: Faker::Quote.yoda,
+    user_id: User.all.sample.id,
+    gossip_id: Gossip.all.sample.id
+  )
+end
+puts "20 Com"
+
+# co = Com.first
+# co.user.first_name
+# co.gossip.title
+
+# go = Gossip.find_by(id: ???)
+# go.coms[1].user.first_name

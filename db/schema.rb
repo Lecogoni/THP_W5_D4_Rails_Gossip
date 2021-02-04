@@ -10,13 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_04_221307) do
+ActiveRecord::Schema.define(version: 2021_02_04_222323) do
 
   create_table "cities", force: :cascade do |t|
     t.string "name"
     t.string "zip_code"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "coms", force: :cascade do |t|
+    t.string "content"
+    t.integer "user_id"
+    t.integer "gossip_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["gossip_id"], name: "index_coms_on_gossip_id"
+    t.index ["user_id"], name: "index_coms_on_user_id"
   end
 
   create_table "gossips", force: :cascade do |t|

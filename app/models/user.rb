@@ -6,5 +6,7 @@ class User < ApplicationRecord
   
   has_many :messages, foreign_key: 'recipient_id', class_name: "Pmrecipient"
   has_many :received_messages, foreign_key: 'privatemessage_id', class_name: "Privatemessage", through: :pmrecipients
+
+  has_many :coms
 end
 
